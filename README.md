@@ -56,7 +56,7 @@ Estimated capacity does not establish availability, per-home throughput, a usabl
 
 ## Partner with Auren
 
-Contact the owner-designated **support@dyadic.app** for feasibility or pilot discussions. Intended branded address: **sales@auren.so**, pending confirmation by the existing mail administrator. Scope, price, availability, and obligations require a separate written agreement; a message is not an order. No delivery test of the contact mailbox is represented by the website.
+Contact **sales@auren.so** for feasibility or pilot discussions. Cloudflare Email Routing forwards enquiries to the owner's verified private destination. Scope, price, availability, and obligations require a separate written agreement; a message is not an order.
 
 ## Rights
 

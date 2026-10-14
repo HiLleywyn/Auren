@@ -52,9 +52,19 @@ test('static server serves the full document library and downloadable assets wit
   }
 });
 test('HTTP boundary does not expose credentials, hidden files, parent paths or write endpoints', async () => {
-  for (const path of ['/../.credentials.json', '/.env', '/.git/config', '/_headers', '/%5c..%5csecret', '/docs/%00', '/does-not-exist']) assert.equal((await fetch(base + path)).status, 404, path);
+  for (const path of ['/../.credentials.json', '/.env', '/.git/config', '/.runtime/cf-account.mjs', '/.runtime/auren-dns-after.json', '/_headers', '/%5c..%5csecret', '/docs/%00', '/does-not-exist']) assert.equal((await fetch(base + path)).status, 404, path);
   assert.equal(safePath('/../../.credentials.json'), null);
   assert.equal((await fetch(base + '/', { method: 'POST', body: 'nothing' })).status, 405);
+});
+
+test('public enquiries use the branded address without exposing the forwarding destination', async () => {
+  for (const path of ['/index.html', '/partners.html', '/partners.mjs', '/docs/commercial.html', '/docs/rights.html']) {
+    const response = await fetch(base + path), body = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.ok(body.includes('sales@auren.so'), path);
+    assert.ok(!body.includes('support@dyadic.app'), path);
+    assert.ok(!body.includes('@proton.me'), path);
+  }
 });
 test('headers prohibit executable embeds and make HEAD and health checks usable', async () => {
   const response = await fetch(base + '/', { method: 'HEAD' });

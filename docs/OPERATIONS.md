@@ -11,8 +11,8 @@ Version 0.2 adds `/workbench.html`, `/partners.html`, and `/docs/index.html`. Bu
 Build from repository root after static build:
 
 ```sh
-docker build -f ops/Dockerfile -t auren-web:0.2.0 .
-docker run -d --name auren-web --restart unless-stopped --init --read-only --tmpfs /tmp:size=16m,noexec,nosuid --cap-drop ALL --security-opt no-new-privileges:true --pids-limit 64 --memory 128m --cpus 0.5 -p 127.0.0.1:5191:8080 auren-web:0.2.0
+docker build -f ops/Dockerfile -t auren-web:0.2.1 .
+docker run -d --name auren-web-v021 --restart unless-stopped --init --read-only --tmpfs /tmp:size=16m,noexec,nosuid --cap-drop ALL --security-opt no-new-privileges:true --pids-limit 64 --memory 128m --cpus 0.5 --log-opt max-size=5m --log-opt max-file=2 -p 127.0.0.1:5193:8080 auren-web:0.2.1
 ```
 
 Only a new task-owned container is used. No other applications are stopped or renamed. Check `/healthz`, source modules, Content-Security-Policy and visible interactions. The container serves only `dist`, not repository secrets or runtime files.
@@ -21,13 +21,17 @@ Only a new task-owned container is used. No other applications are stopped or re
 
 Static `dist` can be served from owner-controlled hosting. GitHub Pages is not selected as a commercial business host; see [GitHub Pages limits](https://docs.github.com/en/enterprise-cloud%40latest/pages/getting-started-with-github-pages/github-pages-limits). No ChatGPT Sites registration or hosting dependency is used.
 
-Owner requested auren.so. Inspect existing DNS and origin before writing. Use a distinct application/tunnel/Worker deployment where practical and preserve unrelated routes. Public exposure is the read-only site, never a hardware controller or administration endpoint. Do not weaken Cloudflare login/security or reuse tunnel credentials as an account API key.
+The owner authorized a full DNS reset for auren.so on October 14, 2026. The zone now contains two proxied tunnel CNAMEs, three Cloudflare MX records, SPF and Cloudflare DKIM. Old DNS has a private local backup. Other domains and tunnel ingress routes are preserved. Public exposure is the read-only site, never a hardware controller or administration endpoint. Do not weaken Cloudflare login/security or reuse tunnel credentials as an account API key.
+
+The persistent tunnel sends auren.so and www.auren.so to the loopback-only Auren container. After an upgrade, verify local health before changing only those two ingress entries. Public availability depends on the local computer, Docker, electricity, internet access and the Cloudflared service remaining online; this is not independent cloud hosting.
 
 Cloudflare OAuth/API credentials must be read in process memory, never command arguments, logs, source, issue bodies, or browser code. `.runtime/`, `.env*`, key files and build output are ignored. Expired authentication requires reconnecting; publication is not complete merely because configuration code exists.
 
 ## Mail
 
-auren.so currently has Proton MX records. Cloudflare Email Routing would generally require its own MX records and can disrupt existing Proton delivery. Adding sales@auren.so should use the existing Proton mail administration or an explicitly reviewed mail migration. Do not change domain-wide MX to add a single alias. Until the alias is verified, public contact remains support@dyadic.app.
+Cloudflare Email Routing replaces the old Proton inbound DNS under the owner's explicit migration instruction. The enabled literal sales@auren.so rule forwards to a verified private destination. Unmatched recipients are dropped. Other former auren.so addresses are not preserved and need their own rules if required.
+
+Forwarding readiness is confirmed through Cloudflare's API; it is not evidence of a particular message arriving in the destination inbox. Test from a separate sender and check the destination and routing logs. No outbound sending service, mailbox or private forwarding address is published by this repository.
 
 ## Verification and recovery
 

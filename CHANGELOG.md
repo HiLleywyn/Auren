@@ -1,5 +1,9 @@
 # Auren release history
 
+## 0.2.1
+
+The public contact and local enquiry draft now use sales@auren.so. Cloudflare Email Routing is enabled with a verified private destination. Owner-authorized DNS migration removes the old Railway and Proton records and routes the site through a persistent tunnel to local hosting. Account credentials, migration helpers and DNS backups remain outside Git and release artifacts. No outbound mailbox or end-to-end inbox delivery result is claimed.
+
 ## 0.2.0
 
 The engineering workbench now models itemized lifecycle costs, monthly adoption cohorts, equipment replacement timing, peak funding and sustained cash recovery. It checks both aggregate access and one surviving carrier, calculates bidirectional radio margin at the chosen channel bandwidth, and evaluates supplied terrain points. JSON reports retain assumptions and limitations; imports ignore saved approvals and recompute outputs. Numerical CSV forecasts and print styling are included.

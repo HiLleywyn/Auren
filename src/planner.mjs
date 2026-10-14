@@ -1,7 +1,7 @@
 /** Reproducible planning tools. Inputs are estimates, never field evidence. */
 import { COMMUNITY, number, capacity, costModel, starlinkCost, pathClearance, linkBudget, rainLoss } from './model.mjs';
 
-export const PLANNER_VERSION = '0.2.0';
+export const PLANNER_VERSION = '0.2.1';
 export const PRESETS = Object.freeze({
   community: { title: 'Clustered community', subscribers: 240, sectors: 12, sharedCapex: 30000, permits: 2000,
     monthlyBackhaul: 700, annualSites: 720, annualStaff: 7500, annualMaintenance: 2000, financing: 6000 },

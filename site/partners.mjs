@@ -8,7 +8,7 @@ $('prepare-enquiry').addEventListener('click', () => {
   }
   draft = `Auren pilot enquiry\n\nGeneral region: ${region}\nApproximate homes: ${homes || 'Not yet known'}\nPartner role: ${$('enquiry-role').value}\n\nTerrain, upstream and proposed contribution:\n${$('enquiry-context').value.trim() || 'To discuss'}\n\nI understand this is a feasibility/development enquiry, not a broadband order, reservation or hardware preorder. Scope, cost and obligations need a separate written agreement.\n`;
   $('enquiry-preview').value = draft;
-  $('enquiry-mail').href = `mailto:support@dyadic.app?subject=${encodeURIComponent('Auren pilot enquiry')}&body=${encodeURIComponent(draft)}`;
+  $('enquiry-mail').href = `mailto:sales@auren.so?subject=${encodeURIComponent('Auren pilot enquiry')}&body=${encodeURIComponent(draft)}`;
   $('enquiry-draft').hidden = false; $('enquiry-status').textContent = 'Draft prepared locally. Review it before opening your mail app. No email has been sent.';
 });
 for (const id of ['enquiry-region', 'enquiry-homes', 'enquiry-role', 'enquiry-context']) $(id).addEventListener('input', () => {

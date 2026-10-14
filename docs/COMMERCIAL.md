@@ -40,7 +40,7 @@ Cannot say: proven 75% cost saving; deployed 100 Mbps Auren service; annual 99.9
 
 ## Contact and domain
 
-Current verified owner-designated contact: **support@dyadic.app**. Intended brand: **auren.so**, intended sales address **sales@auren.so**. Existing domain MX records route to Proton; they must not be replaced merely to add one alias. The private forwarding destination is not published here. Mailbox/forwarding confirmation and domain deployment remain operational tasks until verified.
+Contact: **sales@auren.so**. Cloudflare Email Routing is enabled and forwards this address to the owner's verified private destination; the destination is not published. This is inbound forwarding, not an outbound mailbox. The public site uses the owner's local server through a persistent Cloudflare Tunnel at **auren.so** and **www.auren.so**.
 
 ## Suggested initial enquiry reply
 
@@ -52,6 +52,6 @@ Thanks for the interest in Auren. We’re at the engineering and pilot stage, no
 - Static demo checked at desktop/mobile widths; all calls to action functional.
 - Rights, experimental status and cost limitations visible.
 - Owner-controlled hosting; no secrets in source or browser build.
-- Email alias verified before becoming the sole contact.
+- Forwarding rule enabled with a verified destination; test delivery separately from configuration readiness.
 - Domain route checked before replacing any existing origin.
 - No payment processor or purchased advertising until separately budgeted and configured.
