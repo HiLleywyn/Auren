@@ -1,0 +1,7 @@
+**
+!dist/
+!dist/**
+!scripts/
+!scripts/serve.mjs
+!ops/
+!ops/Dockerfile

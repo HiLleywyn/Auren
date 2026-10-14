@@ -1,0 +1,21 @@
+name: Engineering checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check runtime
+        run: node --version
+      - name: Validate source and accessible references
+        run: npm run check
+      - name: Run engineering and fail-closed tests
+        run: npm test
+      - name: Build self-contained site
+        run: npm run build
+      - name: Reproduce planning report
+        run: npm run report

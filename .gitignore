@@ -1,0 +1,12 @@
+node_modules/
+dist/
+outputs/
+.runtime/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+*.log
+.DS_Store

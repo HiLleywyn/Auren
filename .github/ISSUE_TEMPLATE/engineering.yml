@@ -1,0 +1,31 @@
+name: Engineering question or evidence
+description: A calculation, assumption, experiment, or implementation question
+title: "[Engineering] "
+body:
+  - type: markdown
+    attributes:
+      value: "This is a public issue. Do not include credentials, home addresses, private customer data or sensitive infrastructure details. Pilot enquiries: support@dyadic.app."
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or finding
+      description: Name the relevant assumption, file, or test.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence classification
+      options:
+        - Hypothesis
+        - Calculation
+        - Estimate or quote
+        - Measured observation (sanitized)
+        - Implementation bug
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction or proposed test
+      description: Include units, configuration and primary sources where applicable.

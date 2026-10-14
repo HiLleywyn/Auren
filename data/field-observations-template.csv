@@ -1,0 +1,1 @@
+test_id,classification,utc_timestamp,site_id,direction,distance_km,bandwidth_mhz,eirp_dbm,rx_dbm,snr_db,concurrent_profiles,throughput_mbps,rtt_p50_ms,rtt_p95_ms,rtt_p99_ms,loss_percent,power_w,wind_mps,rain_mm_hour,operator_minutes,configuration_hash,instrument_id,notes
