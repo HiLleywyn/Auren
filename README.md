@@ -1,8 +1,8 @@
 # Auren
 
-**Broadband, closer to earth.**
+**Broadband without satellites.**
 
-Auren is an experimental, satellite-free broadband architecture: modular elevated relays whose geometry and routes can change, with equipment that comes down to ground level for repair. All internet backhaul is terrestrial. A stratospheric extension is a separate, unresolved research programme.
+Auren is an experimental, satellite-free broadband architecture: modular elevated relays whose geometry and routes can change, with equipment that comes down to ground level for repair. All internet backhaul is terrestrial. A stratospheric extension is a separate, unresolved research program.
 
 **What exists:** reproducible engineering calculations, a synthetic failure-routing simulator, a simulation-only maintenance planner, a browser-local engineering workbench with itemized costs/adoption cash flow/terrain profiles and exportable reports, a browsable design library, conceptual CAD, and design/test/commercial documents.
 
@@ -22,7 +22,7 @@ npm run serve
 
 Open http://127.0.0.1:5190. The static build is in `dist/`. Every website calculation uses the same modules as the CLI and tests.
 
-Open `/workbench.html` to create a scenario and download JSON/CSV reports, `/docs/index.html` for the complete design library, and `/partners.html` to prepare a non-binding enquiry. No inputs are uploaded, stored in browser persistence, or connected to real equipment.
+Open `/workbench.html` to create a scenario and download JSON/CSV reports, `/docs/index.html` for the complete design library, and `/partners.html` to prepare a non-binding inquiry. No inputs are uploaded, stored in browser persistence, or connected to real equipment.
 
 ## Design documents
 
@@ -38,7 +38,7 @@ Open `/workbench.html` to create a scenario and download JSON/CSV reports, `/doc
 | [Field experiments](docs/FIELD-TESTS.md) | Measurable pass/fail criteria and cheap falsifier |
 | [Prototype BOM](docs/BOM.md) | Catalog prices versus fabrication allowances |
 | [Development plan](docs/ROADMAP.md) | 30-day, 90-day and one-year gates |
-| [Commercial programme](docs/COMMERCIAL.md) | Feasibility and pilot inquiries, not unbuilt hardware orders |
+| [Commercial program](docs/COMMERCIAL.md) | Feasibility and pilot inquiries, not unbuilt hardware orders |
 | [Sources](docs/SOURCES.md) | Primary-source register, dates and uncertainty |
 | [Operations](docs/OPERATIONS.md) | Build, local preview, deployment and credential boundaries |
 
@@ -56,7 +56,7 @@ Estimated capacity does not establish availability, per-home throughput, a usabl
 
 ## Partner with Auren
 
-Contact **sales@auren.so** for feasibility or pilot discussions. Cloudflare Email Routing forwards enquiries to the owner's verified private destination. Scope, price, availability, and obligations require a separate written agreement; a message is not an order.
+Contact **sales@auren.so** for feasibility or pilot discussions. Cloudflare Email Routing forwards inquiries to the owner's verified private destination. Scope, price, availability, and obligations require a separate written agreement; a message is not an order.
 
 ## Rights
 

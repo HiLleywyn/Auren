@@ -26,11 +26,11 @@ The community baseline is about 33% of the favorable $55/month five-year referen
 
 | Alternative | Prefer it when | Auren must beat |
 | --- | --- | --- |
-| Conventional fixed wireless ISP | Existing rooftops/towers have inexpensive clear paths and workable maintenance access | Fully paid installation, sites, travel, climbing, spares, carrier access and equivalent throughput/availability—not radio purchase price alone |
+| Conventional fixed wireless ISP | Existing rooftops/towers have inexpensive clear paths and workable maintenance access | Include installation, sites, travel, climbing, spares, carrier access, and equivalent throughput/availability. Radio prices alone are not a useful comparison. |
 | Fiber extension / PON | Dense adoption, usable ducts/poles, or affordable construction bids | Five-year all-in cost and expansion capacity. Fiber may eliminate radio/weather risks and provide much more sustained bandwidth. |
 | Community mesh | Volunteers/community ownership and existing roofs support an affordable local network | Same staffing and support boundary. Free labor is not a provider-cost advantage if Auren charges for operations. |
 | Commercial deployable mast | Temporary/permitted site access is needed and a certified rental/purchase is practical | Proven structure, setup time, repair burden, inspection, lifetime and insurance. The novel mechanism is unnecessary if it saves nothing. |
-| Optical backhaul | Clear, stable paths allow high capacity with RF/fiber fallback | Acquisition, pointing, eye safety, fog outages, dirty windows and complete fallback capacity—not a clear-weather speed test |
+| Optical backhaul | Clear, stable paths allow high capacity with RF/fiber fallback | Include acquisition, pointing, eye safety, fog outages, dirty windows, and complete fallback capacity. A clear-weather speed test does not establish reliable service. |
 | HAPS or balloons | Ground geometry cannot economically reach the population | Persistent station-keeping, winter energy, capacity per watt, replenishment, regulation and fleet cost; regional trials are not global equivalence |
 
 Obtain ordinary WISP and fiber bids before fabricating the mast. The invention earns its role only if measured height or maintenance gains exceed the added mechanism, certification, anchors, weather exposure and operating costs.

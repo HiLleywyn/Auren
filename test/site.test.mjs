@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderMarkdown, inlineMarkdown, safeLink, DOCUMENTS } from '../scripts/render-docs.mjs';
+import { renderMarkdown, inlineMarkdown, safeLink, titleCase, DOCUMENTS } from '../scripts/render-docs.mjs';
 import { createStaticServer, safePath } from '../scripts/serve.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 let server, base;
@@ -57,7 +57,7 @@ test('HTTP boundary does not expose credentials, hidden files, parent paths or w
   assert.equal((await fetch(base + '/', { method: 'POST', body: 'nothing' })).status, 405);
 });
 
-test('public enquiries use the branded address without exposing the forwarding destination', async () => {
+test('public inquiries use the branded address without exposing the forwarding destination', async () => {
   for (const path of ['/index.html', '/partners.html', '/partners.mjs', '/docs/commercial.html', '/docs/rights.html']) {
     const response = await fetch(base + path), body = await response.text();
     assert.equal(response.status, 200, path);
@@ -73,4 +73,31 @@ test('headers prohibit executable embeds and make HEAD and health checks usable'
   assert.ok(response.headers.get('content-security-policy').includes("form-action 'none'"));
   assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
   assert.equal((await (await fetch(base + '/healthz')).json()).mode, 'SIMULATION_ONLY');
+});
+
+test('page copy uses US English, Title Case titles, and no em dashes', async () => {
+  const paths = ['/', '/workbench.html', '/partners.html', '/docs/index.html', '/docs/rights.html', ...DOCUMENTS.map(x => `/docs/${x[1]}.html`)];
+  for (const path of paths) {
+    const html = await (await fetch(base + path)).text();
+    assert.ok(html.includes('lang="en-US"'), path);
+    assert.ok(!html.includes('\u2014'), `Em dash in ${path}`);
+    const visible = html.replace(/<[^>]+>/g, ' ');
+    assert.ok(!/\b(?:programme|programmes|enquiry|enquiries|organiser)\b/i.test(visible), `UK spelling in ${path}`);
+    const title = html.match(/<title>([^<]+)<\/title>/)[1];
+    assert.equal(title, titleCase(title), `Title Case in ${path}`);
+    for (const option of html.matchAll(/<option\b[^>]*>([^<]+)<\/option>/g)) assert.equal(option[1], titleCase(option[1]), `Native menu Title Case in ${path}`);
+  }
+  for (const file of ['style.css', 'docs.css', 'partners.css', 'workbench.css']) {
+    const css = await (await fetch(base + '/' + file)).text();
+    assert.ok(!/text-transform:\s*uppercase/.test(css), `All-caps styling in ${file}`);
+  }
+});
+
+test('Title Case preserves acronyms and the category filter values stay aligned', () => {
+  assert.equal(titleCase('radio links / RF safety'), 'Radio Links / RF Safety');
+  assert.equal(titleCase('Like this or that'), 'Like This Or That');
+  for (const [, , title, , category] of DOCUMENTS) {
+    assert.equal(title, titleCase(title));
+    assert.equal(category, titleCase(category));
+  }
 });

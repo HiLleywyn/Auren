@@ -1,5 +1,9 @@
 # Auren release history
 
+## 0.2.2
+
+The site uses US English and Title Case for headings, menus, and categories. The overview, pilot page, workbench introduction, and design library use plainer language. Em dashes are removed from published copy. Engineering assumptions, costs, safety limits, and experimental status are unchanged.
+
 ## 0.2.1
 
 The public contact and local enquiry draft now use sales@auren.so. Cloudflare Email Routing is enabled with a verified private destination. Owner-authorized DNS migration removes the old Railway and Proton records and routes the site through a persistent tunnel to local hosting. Account credentials, migration helpers and DNS backups remain outside Git and release artifacts. No outbound mailbox or end-to-end inbox delivery result is claimed.

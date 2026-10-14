@@ -1,12 +1,12 @@
-# Auren commercial programme
+# Auren commercial program
 
 ## Positioning
 
-Broadband, closer to earth. Satellite-free adaptive-height relays, terrestrial internet gateways, and repair at ground level. Experimental engineering seeking real sites and partners—not a ready-to-ship Starlink replacement.
+Auren is testing a rural broadband design with adjustable ground relays and equipment that can be lowered for repair. The network uses terrestrial internet connections. We’re looking for sites and partners to test it; it is not ready to replace an existing service.
 
 ## Current offer
 
-Enquiries for scoped feasibility studies and development partnerships. Suitable partners: rural ISPs, community networks, land/site hosts, mechanical fabricators, radio/optical specialists and pilot sponsors. No retail broadband subscription, certified mast sale or hardware preorder is available. No checkout, deposits or card collection exists.
+We welcome inquiries from rural ISPs, community networks, site owners, fabricators, radio and optical specialists, and pilot sponsors. A feasibility study or development partnership would need a written scope and a team able to carry it out. We are not selling broadband subscriptions, masts, or hardware preorders.
 
 Scope and price require a written quotation and agreement. No fixed delivery date, staffed service capacity or contract acceptance is promised by the website. Do not advertise unstaffed paid services as immediately fulfillable.
 
@@ -42,7 +42,7 @@ Cannot say: proven 75% cost saving; deployed 100 Mbps Auren service; annual 99.9
 
 Contact: **sales@auren.so**. Cloudflare Email Routing is enabled and forwards this address to the owner's verified private destination; the destination is not published. This is inbound forwarding, not an outbound mailbox. The public site uses the owner's local server through a persistent Cloudflare Tunnel at **auren.so** and **www.auren.so**.
 
-## Suggested initial enquiry reply
+## Suggested initial inquiry reply
 
 Thanks for the interest in Auren. We’re at the engineering and pilot stage, not selling broadband subscriptions or taking hardware deposits. Send the general region, approximate number of homes, terrain, and available terrestrial backhaul, and we can discuss whether a feasibility study makes sense. We’ll agree scope and cost in writing before any paid work.
 

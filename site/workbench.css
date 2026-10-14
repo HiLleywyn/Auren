@@ -3,7 +3,7 @@
 .method-card { border-top:2px solid var(--orange); padding:25px; background:var(--panel); }
 .method-card h2 { font-size:30px; margin:14px 0; }
 .method-card p,.method-card a { font-size:12px; }
-.micro-label { font-size:10px; text-transform:uppercase; letter-spacing:1.1px; color:var(--muted); }
+.micro-label { font-size:10px; text-transform:capitalize; letter-spacing:1.1px; color:var(--muted); }
 .workspace-toolbar { display:flex; justify-content:space-between; gap:25px; padding:25px 0; border-block:1px solid var(--line); align-items:end; }
 .workspace-toolbar label { font-size:11px; }
 .workspace-toolbar select { display:block; min-width:245px; margin-top:8px; }

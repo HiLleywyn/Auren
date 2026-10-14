@@ -7,10 +7,10 @@ const value = id => Number($(id).value);
 const text = (id, value) => { $(id).textContent = value; };
 
 const phases = {
-  assemble: ['Base-level assembly', 'Short bays are inserted at ground level. Alternating load-support collars are a hypothesis that needs a restrained low-height prototype and independent review.'],
-  raise: ['Raise, tension, and mechanically lock', 'Reviewed guy tension and positive locks must support every deployment stage. A software flag is not a load-bearing lock. Anchors, wind and recovery loads remain engineering work.'],
-  operate: ['Operate with a qualified alternate path', 'Access and terrestrial transport need real spare capacity before a relay changes geometry. Two carrier names are not enough: shared ducts, power and storms can defeat both.'],
-  service: ['Bring the cartridge down, not the technician up', 'An independent captured carriage lowers equipment only after approved handover and local safety checks. This illustration is not motor control or authorization to build the structure.']
+  assemble: ['Ground-Level Assembly', 'Short mast sections would be added at the base. Alternating collars would carry the load while the next section is fitted. This needs a restrained prototype and independent engineering review.'],
+  raise: ['Raise And Lock The Mast', 'Guy tension and mechanical locks must support the mast at every stage. We still need to calculate and test the anchor, wind, and recovery loads. Software cannot replace those physical protections.'],
+  operate: ['Keep Another Route Available', 'Another route needs enough spare capacity before a relay changes height. Two carriers can still fail together if they share a duct, power supply, or flood risk.'],
+  service: ['Lower Equipment For Repair', 'A separate carriage would lower the equipment after traffic is handed over and local safety checks pass. This drawing illustrates the idea. It does not operate a motor or approve a structure.']
 };
 for (const button of document.querySelectorAll('button[data-phase]')) button.addEventListener('click', () => {
   const phase = button.dataset.phase;

@@ -1,21 +1,23 @@
 import { mkdir, readFile, writeFile, cp } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
+export const titleCase = text => String(text).replace(/(^|[\s/-])([a-z])/g, (_, boundary, letter) => boundary + letter.toUpperCase());
+
 export const DOCUMENTS = [
   ['ARCHITECTURE', 'architecture', 'Architecture', 'The invention, complete internet path, precedents and global constraints.', 'System design'],
   ['ENGINEERING', 'engineering', 'Engineering budgets', 'Radio links, terrain, capacity, latency, weather and power.', 'System design'],
   ['MECHANISM', 'mechanism', 'Relay mechanism', 'Base assembly, locking collars, service carriage and unresolved loads.', 'Hardware'],
   ['SAFETY', 'safety', 'Controller & safety', 'Fail-closed simulation, physical boundaries and qualification.', 'Hardware'],
-  ['ECONOMICS', 'economics', 'Five-year economics', 'Full cost accounting, quarter-cost hypothesis and sparse deployment limits.', 'Economics'],
+  ['ECONOMICS', 'economics', 'Five-year economics', 'Five-year costs, the 25% target, and where the economics stop working.', 'Economics'],
   ['PLANNER', 'planner', 'Workbench methods', 'Adoption cohorts, cash flow, report schema and sampled terrain limitations.', 'Economics'],
   ['COMPARISON', 'comparison', 'Starlink & alternatives', 'Residential, mobility, maritime, aviation and geographic reach.', 'System design'],
-  ['FIELD-TESTS', 'field-tests', 'Field experiments', 'Measurable pass/fail gates and the cheapest way to falsify the concept.', 'Validation'],
+  ['FIELD-TESTS', 'field-tests', 'Field experiments', 'Field tests, pass/fail criteria, and the first checks to run.', 'Validation'],
   ['BOM', 'bom', 'Prototype bill of materials', 'Catalog prices, unquoted allowances, missing approvals and paid labor.', 'Hardware'],
   ['ROADMAP', 'roadmap', 'Development plan', '30 days, 90 days, one year and a separate global track.', 'Validation'],
-  ['COMMERCIAL', 'commercial', 'Pilot programme', 'Qualification, written scopes and commercial boundaries.', 'Operations'],
-  ['SOURCES', 'sources', 'Primary sources', 'Vendor and research references with dates and claim boundaries.', 'Validation'],
+  ['COMMERCIAL', 'commercial', 'Pilot program', 'Qualification, written scopes and commercial boundaries.', 'Operations'],
+  ['SOURCES', 'sources', 'Primary sources', 'Vendor specifications and research used in the design.', 'Validation'],
   ['OPERATIONS', 'operations', 'Build & operations', 'Local hosting, containers, domain routing, mail and recovery.', 'Operations']
-];
+].map(([name, id, title, description, category]) => [name, id, titleCase(title), description, titleCase(category)]);
 export const escapeHtml = text => String(text).replace(/[&<>"']/g, x => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[x]);
 const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'section';
 export function safeLink(href) {
@@ -45,7 +47,7 @@ export function renderMarkdown(markdown) {
     if (line.startsWith('```')) {
       const type = line.slice(3).trim(); const content = []; i++;
       while (i < lines.length && !lines[i].startsWith('```')) content.push(lines[i++]);
-      i++; output.push(`${type === 'mermaid' ? '<p class="code-caption">Network diagram source. The visual overview is on the home page; this text records its dependencies.</p>' : ''}<pre><code>${escapeHtml(content.join('\n'))}</code></pre>`); continue;
+      i++; output.push(`${type === 'mermaid' ? '<p class="code-caption">Network diagram source. See the home page for the visual overview.</p>' : ''}<pre><code>${escapeHtml(content.join('\n'))}</code></pre>`); continue;
     }
     const h = line.match(/^(#{1,6})\s+(.+)$/);
     if (h) {
@@ -76,7 +78,7 @@ export function renderMarkdown(markdown) {
   return { html: output.join('\n'), headings };
 }
 function shell(title, content, extra = '') {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${escapeHtml(title)} — Auren engineering design library"><title>${escapeHtml(title)} — Auren</title><link rel="icon" href="../mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../docs.css">${extra}</head><body class="docs-page"><a class="skip" href="#main">Skip to content</a><header class="nav wrap"><a class="brand" href="../index.html"><img src="../mark.svg" width="34" height="34" alt=""><span>Auren<span class="brand-sub">Broadband research</span></span></a><nav aria-label="Main navigation"><a href="../index.html">Overview</a><a href="../workbench.html">Workbench</a><a href="./index.html" aria-current="page">Design library</a><a class="nav-contact" href="../partners.html">Pilot programme</a></nav></header>${content}<footer class="wrap"><p><strong>Auren</strong> · Design library · © 2026 Lleywyn · Source-visible, commercial rights retained.</p><p><a href="./rights.html">Rights</a> · <a href="./safety.html">Safety</a> · <a href="./sources.html">Primary sources</a> · <a href="https://github.com/HiLleywyn/Auren">GitHub</a></p><p>Experimental design, calculated estimates, and explicit hypotheses. No fabricated mast, field-qualified service, patent protection, or proven quarter-cost advantage is claimed.</p></footer></body></html>`;
+  return `<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${escapeHtml(titleCase(title))} | Auren engineering design library"><title>${escapeHtml(titleCase(title))} | Auren</title><link rel="icon" href="../mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../docs.css">${extra}</head><body class="docs-page"><a class="skip" href="#main">Skip to content</a><header class="nav wrap"><a class="brand" href="../index.html"><img src="../mark.svg" width="34" height="34" alt=""><span>Auren<span class="brand-sub">Broadband research</span></span></a><nav aria-label="Main navigation"><a href="../index.html">Overview</a><a href="../workbench.html">Workbench</a><a href="./index.html" aria-current="page">Design library</a><a class="nav-contact" href="../partners.html">Pilot program</a></nav></header>${content}<footer class="wrap"><p><strong>Auren</strong> · Design library · © 2026 Lleywyn · Source-visible, commercial rights retained.</p><p><a href="./rights.html">Rights</a> · <a href="./safety.html">Safety</a> · <a href="./sources.html">Primary sources</a> · <a href="https://github.com/HiLleywyn/Auren">GitHub</a></p><p>Auren is in development. The mast has not been built or certified, and the proposed savings still need field testing.</p></footer></body></html>`;
 }
 export async function buildDocs(root, dist) {
   const directory = resolve(dist, 'docs'), downloads = resolve(directory, 'downloads'); await mkdir(downloads, { recursive: true });
@@ -90,7 +92,7 @@ export async function buildDocs(root, dist) {
   const rights = renderMarkdown(await readFile(resolve(root, 'RIGHTS.md'), 'utf8'));
   await writeFile(resolve(directory, 'rights.html'), shell('Rights', `<main id="main" class="wrap"><article class="doc-article rights-article">${rights.html}</article></main>`));
   const cards = DOCUMENTS.map(([name, id, title, description, category], index) => `<a class="document-card" href="./${id}.html" data-document data-category="${escapeHtml(category)}"><span class="micro-label">${String(index + 1).padStart(2, '0')} / ${escapeHtml(category)}</span><h2>${escapeHtml(title)}</h2><p>${escapeHtml(description)}</p><span class="card-link">Read document ↗</span></a>`).join('');
-  const index = `<main id="main" class="wrap"><section class="library-heading"><div><p class="eyebrow">Design library / v0.2</p><h1>The engineering,<br>in the open.</h1><p class="lede">From mechanism to money. Every dependency has a place here.</p></div><p>These documents describe an experimental design—not certified hardware or a live ISP. Source files are downloadable, the models are reproducible, and the field-test gates are public.</p></section><div class="library-filter"><label for="document-search">Find a document<input id="document-search" type="search" placeholder="Radio, costs, safety…"></label><label for="document-category">Category<select id="document-category"><option value="all">All documents</option>${[...new Set(DOCUMENTS.map(x => x[4]))].map(c => `<option>${escapeHtml(c)}</option>`).join('')}</select></label><span id="document-count" role="status">${DOCUMENTS.length} documents</span></div><div class="document-grid">${cards}</div><p id="document-empty" class="help" hidden>No matching documents. Try a different term or category.</p><section class="library-assets"><div><h2>Prototype assets</h2><p>The geometry is conceptual, not a qualified structure. Field templates contain no fabricated measurements.</p></div><div><a href="./downloads/concept.scad" download>Concept CAD / OpenSCAD ↧</a><a href="./downloads/field-observations-template.csv" download>Field observation template / CSV ↧</a><a href="./downloads/terrain-template.csv" download>Sampled terrain template / CSV ↧</a></div></section></main>`;
+  const index = `<main id="main" class="wrap"><section class="library-heading"><div><p class="eyebrow">Design library / v0.2</p><h1>Design Library</h1><p class="lede">The network, mast design, cost model, and test plan.</p></div><p>Auren is still an experimental design. Read the calculations, download the source files, or use the workbench to check different assumptions.</p></section><div class="library-filter"><label for="document-search">Find A Document<input id="document-search" type="search" placeholder="Radio, costs, safety…"></label><label for="document-category">Category<select id="document-category"><option value="all">All Documents</option>${[...new Set(DOCUMENTS.map(x => x[4]))].map(c => `<option>${escapeHtml(c)}</option>`).join('')}</select></label><span id="document-count" role="status">${DOCUMENTS.length} documents</span></div><div class="document-grid">${cards}</div><p id="document-empty" class="help" hidden>No matching documents. Try a different term or category.</p><section class="library-assets"><div><h2>Prototype assets</h2><p>The geometry is conceptual, not a qualified structure. Field templates contain no fabricated measurements.</p></div><div><a href="./downloads/concept.scad" download>Concept CAD / OpenSCAD ↧</a><a href="./downloads/field-observations-template.csv" download>Field observation template / CSV ↧</a><a href="./downloads/terrain-template.csv" download>Sampled terrain template / CSV ↧</a></div></section></main>`;
   await writeFile(resolve(directory, 'index.html'), shell('Design library', index, '<script type="module" src="../library.mjs"></script>'));
   await cp(resolve(root, 'hardware/concept.scad'), resolve(downloads, 'concept.scad'));
   await cp(resolve(root, 'data/field-observations-template.csv'), resolve(downloads, 'field-observations-template.csv'));

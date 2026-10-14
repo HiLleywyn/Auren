@@ -11,8 +11,8 @@ Version 0.2 adds `/workbench.html`, `/partners.html`, and `/docs/index.html`. Bu
 Build from repository root after static build:
 
 ```sh
-docker build -f ops/Dockerfile -t auren-web:0.2.1 .
-docker run -d --name auren-web-v021 --restart unless-stopped --init --read-only --tmpfs /tmp:size=16m,noexec,nosuid --cap-drop ALL --security-opt no-new-privileges:true --pids-limit 64 --memory 128m --cpus 0.5 --log-opt max-size=5m --log-opt max-file=2 -p 127.0.0.1:5193:8080 auren-web:0.2.1
+docker build -f ops/Dockerfile -t auren-web:0.2.2 .
+docker run -d --name auren-web-v022-final --restart unless-stopped --init --read-only --tmpfs /tmp:size=16m,noexec,nosuid --cap-drop ALL --security-opt no-new-privileges:true --pids-limit 64 --memory 128m --cpus 0.5 --log-opt max-size=5m --log-opt max-file=2 -p 127.0.0.1:5195:8080 auren-web:0.2.2
 ```
 
 Only a new task-owned container is used. No other applications are stopped or renamed. Check `/healthz`, source modules, Content-Security-Policy and visible interactions. The container serves only `dist`, not repository secrets or runtime files.

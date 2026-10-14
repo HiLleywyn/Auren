@@ -60,7 +60,7 @@ letter-spacing:-1px}
 display:block;
 font-size:10px;
 letter-spacing:1.5px;
-text-transform:uppercase;
+text-transform:capitalize;
 font-weight:500}
 .nav nav{
 display:flex;
@@ -83,7 +83,7 @@ padding-bottom:65px}
 .eyebrow{
 font-size:11px;
 letter-spacing:1.7px;
-text-transform:uppercase;
+text-transform:capitalize;
 font-weight:650;
 display:flex;
 align-items:center;
@@ -94,10 +94,14 @@ width:7px;
 height:7px;
 background:var(--orange);
 border-radius:100%}
+h1,h2,h3,h4,h5,h6,nav a,footer a,summary,th,caption,dt,.tabs button,.button,.text-button,.mechanism-steps button,.badge,.library-stack a,.library-assets a,.card-link,.back-link,.doc-downloads a,.metric-row span,.result-label,.comparison span{
+text-transform:capitalize}
+select,option{
+text-transform:capitalize}
 h1{
 font-family:var(--serif);
 font-weight:400;
-font-size:clamp(54px,6.4vw,82px);
+font-size:clamp(48px,5.7vw,72px);
 line-height:1.03;
 letter-spacing:-3px;
 margin:0 0 28px}
@@ -410,11 +414,11 @@ padding-top:22px}
 .roadmap li>span{
 font-size:11px;
 color:var(--orange);
-text-transform:uppercase;
+text-transform:capitalize;
 letter-spacing:1px}
 .partners{
 background:#dfe8d9}
-.micro-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.micro-label{font-size:10px;letter-spacing:1px;text-transform:capitalize;color:var(--muted)}
 .mechanism-section{background:#e9ede3}
 .mechanism-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:75px;align-items:center}
 .mechanism-steps{display:flex;flex-direction:column;margin:25px 0 30px}
@@ -442,7 +446,7 @@ background:#dfe8d9}
 .library-teaser p:not(.eyebrow){font-size:14px;color:var(--muted);margin-bottom:25px}
 .library-stack{display:flex;flex-direction:column}
 .library-stack a{border-top:1px solid var(--line);padding:20px 0;text-decoration:none;font-size:15px}
-.library-stack span{display:block;text-transform:uppercase;color:var(--orange);font-size:10px;letter-spacing:1px;margin-bottom:6px}
+.library-stack span{display:block;text-transform:capitalize;color:var(--orange);font-size:10px;letter-spacing:1px;margin-bottom:6px}
 .partner-layout{
 display:grid;
 grid-template-columns:1.35fr 1fr;
