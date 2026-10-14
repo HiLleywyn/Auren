@@ -1,0 +1,13 @@
+# Auren release history
+
+## 0.2.0
+
+The engineering workbench now models itemized lifecycle costs, monthly adoption cohorts, equipment replacement timing, peak funding and sustained cash recovery. It checks both aggregate access and one surviving carrier, calculates bidirectional radio margin at the chosen channel bandwidth, and evaluates supplied terrain points. JSON reports retain assumptions and limitations; imports ignore saved approvals and recompute outputs. Numerical CSV forecasts and print styling are included.
+
+The local site adds a searchable thirteen-document design library, downloadable conceptual CAD and empty field templates, a relay-mechanism explainer, and a pilot programme with a browser-local enquiry draft. No visitor database, analytics, persistent browser storage, payments or physical equipment control is added.
+
+The baseline remains approximately $1,179/home over five years at immediate full adoption, before concentrated R&D and tax. The quarter-cost target and service equivalence remain unproven. Domain/mail setup requires working owner authentication; the interim contact remains support@dyadic.app. GitHub-hosted checks remain blocked by the account billing lock; local checks are separate.
+
+## 0.1.0
+
+Initial architecture and engineering documents, pure planning models, synthetic failure routing, simulation-only maintenance admission, concept CAD and interactive overview. No physical mast or broadband service deployed.

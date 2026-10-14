@@ -6,6 +6,19 @@ const money = n => new Intl.NumberFormat('en-US', { style: 'currency', currency:
 const value = id => Number($(id).value);
 const text = (id, value) => { $(id).textContent = value; };
 
+const phases = {
+  assemble: ['Base-level assembly', 'Short bays are inserted at ground level. Alternating load-support collars are a hypothesis that needs a restrained low-height prototype and independent review.'],
+  raise: ['Raise, tension, and mechanically lock', 'Reviewed guy tension and positive locks must support every deployment stage. A software flag is not a load-bearing lock. Anchors, wind and recovery loads remain engineering work.'],
+  operate: ['Operate with a qualified alternate path', 'Access and terrestrial transport need real spare capacity before a relay changes geometry. Two carrier names are not enough: shared ducts, power and storms can defeat both.'],
+  service: ['Bring the cartridge down, not the technician up', 'An independent captured carriage lowers equipment only after approved handover and local safety checks. This illustration is not motor control or authorization to build the structure.']
+};
+for (const button of document.querySelectorAll('button[data-phase]')) button.addEventListener('click', () => {
+  const phase = button.dataset.phase;
+  for (const peer of document.querySelectorAll('button[data-phase]')) peer.setAttribute('aria-pressed', String(peer === button));
+  $('mechanism-scene').dataset.phase = phase;
+  text('mechanism-stage-title', phases[phase][0]); text('mechanism-stage-copy', phases[phase][1]);
+});
+
 for (const tab of document.querySelectorAll('[role=tab]')) {
   tab.addEventListener('click', () => {
     for (const peer of document.querySelectorAll('[role=tab]')) {

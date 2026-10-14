@@ -4,7 +4,7 @@
 
 Auren is an experimental, satellite-free broadband architecture: modular elevated relays whose geometry and routes can change, with equipment that comes down to ground level for repair. All internet backhaul is terrestrial. A stratospheric extension is a separate, unresolved research programme.
 
-**What exists:** reproducible engineering calculations, a synthetic failure-routing simulator, a simulation-only maintenance planner, a self-contained interactive website, conceptual CAD, and design/test/commercial documents.
+**What exists:** reproducible engineering calculations, a synthetic failure-routing simulator, a simulation-only maintenance planner, a browser-local engineering workbench with itemized costs/adoption cash flow/terrain profiles and exportable reports, a browsable design library, conceptual CAD, and design/test/commercial documents.
 
 **What does not exist:** a fabricated or certified Auren mast, a deployed Auren ISP, measured annual availability, proven 25%-of-Starlink costs, global coverage, a patentability opinion, or a physical actuator interface. No hardware deposits or broadband subscriptions are being accepted.
 
@@ -22,6 +22,8 @@ npm run serve
 
 Open http://127.0.0.1:5190. The static build is in `dist/`. Every website calculation uses the same modules as the CLI and tests.
 
+Open `/workbench.html` to create a scenario and download JSON/CSV reports, `/docs/index.html` for the complete design library, and `/partners.html` to prepare a non-binding enquiry. No inputs are uploaded, stored in browser persistence, or connected to real equipment.
+
 ## Design documents
 
 | Document | Purpose |
@@ -31,6 +33,8 @@ Open http://127.0.0.1:5190. The static build is in `dist/`. Every website calcul
 | [Mast mechanism](docs/MECHANISM.md) | Concept, interfaces, unresolved loads and qualification gates |
 | [Controller and safety](docs/SAFETY.md) | Fail-closed planning model; no physical actuation |
 | [Economics](docs/ECONOMICS.md) | Transparent five-year cost assumptions and sensitivities |
+| [Workbench methods](docs/PLANNER.md) | Cohort adoption, cash flow, terrain input and report trust |
+| [Service comparison](docs/COMPARISON.md) | Residential, portability, mobility, maritime, aviation and reach |
 | [Field experiments](docs/FIELD-TESTS.md) | Measurable pass/fail criteria and cheap falsifier |
 | [Prototype BOM](docs/BOM.md) | Catalog prices versus fabrication allowances |
 | [Development plan](docs/ROADMAP.md) | 30-day, 90-day and one-year gates |
@@ -52,7 +56,7 @@ Estimated capacity does not establish availability, per-home throughput, a usabl
 
 ## Partner with Auren
 
-Contact **support@dyadic.app** for feasibility or pilot discussions. Intended branded address: **sales@auren.so**, pending confirmation by the existing mail administrator. Scope, price, availability, and obligations require a separate written agreement; a message is not an order.
+Contact the owner-designated **support@dyadic.app** for feasibility or pilot discussions. Intended branded address: **sales@auren.so**, pending confirmation by the existing mail administrator. Scope, price, availability, and obligations require a separate written agreement; a message is not an order. No delivery test of the contact mailbox is represented by the website.
 
 ## Rights
 

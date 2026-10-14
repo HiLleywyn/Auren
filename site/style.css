@@ -414,6 +414,35 @@ text-transform:uppercase;
 letter-spacing:1px}
 .partners{
 background:#dfe8d9}
+.micro-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.mechanism-section{background:#e9ede3}
+.mechanism-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:75px;align-items:center}
+.mechanism-steps{display:flex;flex-direction:column;margin:25px 0 30px}
+.mechanism-steps button{display:flex;gap:18px;align-items:center;text-align:left;border:0;border-bottom:1px solid #bbc8b9;background:transparent;color:var(--muted);padding:15px 0;font-size:13px;cursor:pointer}
+.mechanism-steps button span{font-size:10px;color:var(--orange)}
+.mechanism-steps button[aria-pressed=true]{color:var(--ink);font-weight:650}
+.mechanism-diagram{background:#dce5d5;border:1px solid #c2d0bc;border-radius:3px}
+.mechanism-diagram svg{display:block;width:100%}
+.mechanism-caption{padding:20px 25px;border-top:1px solid #c2d0bc;min-height:155px}
+.mechanism-caption h3{font-size:14px;margin:0 0 10px;font-weight:600}
+.mechanism-caption p{font-size:12px;color:var(--muted);margin:0}
+.diagram-mast,.diagram-carriage,.diagram-guys{transition:transform .5s,opacity .5s;transform-origin:259px 340px}
+.mechanism-diagram[data-phase=assemble] .diagram-mast{transform:scaleY(.33)}
+.mechanism-diagram[data-phase=assemble] .diagram-carriage{transform:translateY(180px)}
+.mechanism-diagram[data-phase=assemble] .diagram-guys{opacity:.15}
+.mechanism-diagram[data-phase=service] .diagram-carriage{transform:translateY(240px)}
+.mechanism-diagram[data-phase=operate] .diagram-spares{opacity:.2}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px;margin-top:38px}
+.evidence-grid>div{border-top:1px solid var(--line);padding-top:22px}
+.evidence-grid strong{display:block;font-size:45px;font-weight:400;font-family:var(--serif);letter-spacing:-1px;margin-top:15px}
+.evidence-grid h3{font-size:14px;font-weight:550;margin:10px 0}
+.evidence-grid p{font-size:12px;color:var(--muted)}
+.evidence-grid a{font-size:11px;text-decoration:none;color:var(--orange)}
+.library-teaser{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.library-teaser p:not(.eyebrow){font-size:14px;color:var(--muted);margin-bottom:25px}
+.library-stack{display:flex;flex-direction:column}
+.library-stack a{border-top:1px solid var(--line);padding:20px 0;text-decoration:none;font-size:15px}
+.library-stack span{display:block;text-transform:uppercase;color:var(--orange);font-size:10px;letter-spacing:1px;margin-bottom:6px}
 .partner-layout{
 display:grid;
 grid-template-columns:1.35fr 1fr;
@@ -460,6 +489,9 @@ gap:25px}
 gap:30px}
 .partner-layout{
 gap:40px}
+.mechanism-layout{gap:35px}
+.evidence-grid{gap:25px}
+.library-teaser{gap:40px}
 }
 @media(max-width:650px){
 .wrap{
@@ -467,12 +499,14 @@ padding-inline:22px}
 .nav{
 padding-block:20px;
 align-items:flex-start;
-gap:16px}
+gap:16px;
+flex-direction:column}
 .nav nav{
-justify-content:flex-end;
+justify-content:space-between;
 gap:8px 14px;
 flex-wrap:wrap;
-max-width:230px;
+max-width:none;
+width:100%;
 font-size:11px}
 .nav-contact{
 padding:4px 7px}
@@ -555,6 +589,9 @@ font-size:12px}
 height:24px}
 .button{
 min-height:44px}
+.mechanism-layout,.evidence-grid,.library-teaser{grid-template-columns:1fr;gap:30px}
+.mechanism-caption{min-height:0}
+.mechanism-steps button{min-height:48px}
 .tabs button{
 min-height:48px}
 }
@@ -563,4 +600,5 @@ html{
 scroll-behavior:auto}
 .bar{
 transition:none}
+.diagram-mast,.diagram-carriage,.diagram-guys{transition:none}
 }

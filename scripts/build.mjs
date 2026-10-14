@@ -1,10 +1,14 @@
-import { mkdir, cp, writeFile } from 'node:fs/promises';
+import { mkdir, cp, writeFile, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { buildDocs } from './render-docs.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = resolve(root, 'dist');
 await mkdir(dist, { recursive: true });
 await cp(resolve(root, 'site'), dist, { recursive: true });
 await cp(resolve(root, 'src'), resolve(dist, 'src'), { recursive: true });
+const documentCount = await buildDocs(root, dist);
+const version = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8')).version;
+await writeFile(resolve(dist, 'release.json'), JSON.stringify({ product: 'Auren', version, mode: 'SIMULATION_ONLY', designDocuments: documentCount, fieldEvidence: false }, null, 2));
 await writeFile(resolve(dist, '_headers'), '/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: default-src \'self\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\'; img-src \'self\'; object-src \'none\'; base-uri \'none\'; frame-ancestors \'none\'; form-action \'none\'\n');
-console.log(`Static Auren build: ${dist}`);
+console.log(`Static Auren build: ${dist} · ${documentCount} browsable design documents`);
